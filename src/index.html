@@ -7,14 +7,22 @@
   <body>
     <div class="container">
       <h1>Find a doctor in the Portland area!</h1>
-      <label for="name">Enter a doctor's name:</label>
-      <input id="name" type="text">
-      <button class="btn-success" id="search-name">start a name search</button>
-      <label for="issue">Enter a medical specialty:</label>
-      <input id="issue" type="text">
-      <button class="btn-success" id="search-issue">start a medical specialty search</button>
-      <button class="btn-danger" id="list-specialties">For a full list of medical specialty names click here</button><br>
-
+        First, select a Portland:
+        <form>
+          <select id="portland">
+            <option value="OR" selected>Portland, Oregon</option>
+            <option value="ME">Portland, Maine</option>
+          </select>
+        </form>
+        <pre>
+        <label for="name">Enter a doctor's name:</label>
+        <input id="name" type="text">
+        <button class="btn-success" id="search-name">start a name search<br></button>
+        <label for="issue"><br>Or, enter a medical specialty:</label>
+        <input id="issue" type="text">
+        <button class="btn-success" id="search-issue">start a medical specialty search<br></button>
+        <button class="btn-danger" id="list-specialties">For a full list of medical specialty names click here</button><br>
+      </pre>
       <div class="show-results"></div>
     </div>
   </body>

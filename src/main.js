@@ -9,12 +9,16 @@ $(document).ready(function() {
   $('#search-name').click(function() {
     let name = $('#name').val();
     $('#name').val("");
-    docLookup (true, name);
+    var e = document.getElementById("portland");
+    var isOR = (e.options[e.selectedIndex].value == "OR");
+    docLookup (true, name, isOR);
   });
   $('#search-issue').click(function() {
     let issue = $('#issue').val();
     $('#issue').val("");
-    docLookup (false, issue);
+    var e = document.getElementById("portland");
+    var isOR = (e.options[e.selectedIndex].value == "OR");
+    docLookup (false, issue, isOR);
   });
   $('#list-specialties').click(function() {
     listSpecialties();
