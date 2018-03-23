@@ -10,19 +10,19 @@ This file will need to contain the line exports.apiKey="________________________
 
 ##Specifications:
 
-####The app should provide user input options for a medical issue name and/or a doctor name
+* The app should provide user input options for a medical issue name and/or a doctor name
 
-####The app should interface with the BetterDoctor API to accomplish a search of either of the above fields within an area named Portland
+* The app should interface with the BetterDoctor API to accomplish a search of either of the above fields within an area named Portland
 
-####Upon success, The app should output a list of doctors in the Portland area to match the either of the above inputs
+* Upon success, The app should output a list of doctors in the Portland area to match the either of the above inputs
 
-####That output should include at a minimum first name, last name, address, phone number, website and whether or not the doctor is accepting new patients
+* That output should include at a minimum first name, last name, address, phone number, website and whether or not the doctor is accepting new patients
 
-####If the search executes correctly and no matches are found, a notification of this should be given
+* If the search executes correctly and no matches are found, a notification of this should be given
 
-####If there the BetterDoctor API call encounters an error, the app should return an error message specifying it.
+* If there the BetterDoctor API call encounters an error, the app should return an error message specifying it.
 
-# Bugs
+## Bugs
 
 While the original specifications mention a search by medical issue, diagnosis of a malady is beyond the reasonable scope of a web application and doctors do not specialize in symptoms.  Instead, the search was executed based on medical specialty of the professional, information that was available from the API.
 
