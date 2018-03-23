@@ -11,14 +11,14 @@ $(document).ready(function() {
     $('#name').val("");
     var e = document.getElementById("portland");
     var isOR = (e.options[e.selectedIndex].value == "OR");
-    docLookup (true, name, isOR);
+    docLookup (true, name, isOR, 0);
   });
   $('#search-issue').click(function() {
     let issue = $('#issue').val();
     $('#issue').val("");
     var e = document.getElementById("portland");
     var isOR = (e.options[e.selectedIndex].value == "OR");
-    docLookup (false, issue, isOR);
+    docLookup (false, issue, isOR, 0);
   });
   $('#list-specialties').click(function() {
     listSpecialties();

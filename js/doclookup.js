@@ -1,4 +1,4 @@
-export function docLookup (isName, inputString, isOR) {
+export function docLookup (isName, inputString, isOR, skip) {
   let promise = new Promise(function(resolve, reject) {
     let request = new XMLHttpRequest();
     let url = "";
@@ -9,9 +9,9 @@ export function docLookup (isName, inputString, isOR) {
       loc = "43.667%2C-70.267%2C100"
     }
     if(isName) {
-      url = `https://api.betterdoctor.com/2016-03-01/doctors?name=`+inputString+`&location=`+loc+`&sort=distance-asc&skip=0&limit=10&user_key=`+process.env.exports.apiKey;
+      url = `https://api.betterdoctor.com/2016-03-01/doctors?name=`+inputString+`&location=`+loc+`&sort=distance-asc&skip=`+skip+`&limit=10&user_key=`+process.env.exports.apiKey;
     } else {
-      url = `https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=`+inputString+`&location=`+loc+`&sort=distance-asc&skip=0&limit=10&user_key=`+process.env.exports.apiKey;
+      url = `https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=`+inputString+`&location=`+loc+`&sort=distance-asc&skip=`+skip+`&limit=10&user_key=`+process.env.exports.apiKey;
     }
     console.log(url);
     request.onload = function() {
@@ -32,6 +32,7 @@ export function docLookup (isName, inputString, isOR) {
     if(body.data.length == 0) {
       $('.show-results').append("Sorry, no doctors matched your search!");
     }
+    $('.show-results').append("<h4>Listing the first "+body.data.length+ " of "+body.meta.total+" results</h4>");
     for (let i=0; i <body.data.length; i++){
       $('.show-results').append("<h5>"+body.data[i].profile.first_name+" "+body.data[i].profile.last_name+"</h5>");
       $('.show-results').append(body.data[i].practices[0].visit_address.street+" "+body.data[i].practices[0].visit_address.city+", "+body.data[i].practices[0].visit_address.state+"<br>");
@@ -46,6 +47,8 @@ export function docLookup (isName, inputString, isOR) {
         $('.show-results').append("Is not accepting new patients <br><br>");
       }
     };
+  }, function(error) {
+    $('.show-results').text(`There was an error processing your request: ${error.responseText}. Please try again.`);
   });
   return;
 }
