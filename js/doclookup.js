@@ -21,10 +21,17 @@ export function docLookup (isName, inputString) {
   promise.then(function(response) {
     let body = JSON.parse(response);
     console.log(body);
-    console.log(body.data.length);
     $('.show-results').empty();
     for (let i=0; i <body.data.length; i++){
       $('.show-results').append("<h5>"+body.data[i].profile.first_name+" "+body.data[i].profile.last_name+"</h5>");
+      $('.show-results').append(body.data[i].practices[0].visit_address.street+" "+body.data[i].practices[0].visit_address.city+", "+body.data[i].practices[0].visit_address.state+"<br>");
+      $('.show-results').append("Phone: "+body.data[i].practices[0].phones[0].number+"<br>");
+      $('.show-results').append("Website: "+body.data[i].practices[0].website+"<br>");
+      if(body.data[i].practices[0].accepts_new_patients) {
+        $('.show-results').append("Is accepting new patients <br><br>");
+      } else {
+        $('.show-results').append("Is not accepting new patients <br><br>");
+      }
     };
   });
   return;
